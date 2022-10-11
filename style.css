@@ -1,0 +1,38 @@
+/* Adjustments for the logo image*/
+img {
+    display: block;
+    margin-top: -3em;
+    /* margin-left: 2em; */
+  }
+
+
+/* Hide footer */
+footer.css-2ykyy6.egzxvld0 {
+    display: none;
+}
+
+
+/* Move block container higher */
+div.block-container.css-18e3th9.egzxvld2 {
+    vertical-align: top;
+    margin-top: -3em;
+}
+
+section.css-1vencpc.e1fqkh3o10 {
+    vertical-align: top;
+    margin-bottom: 5em;
+}
+  
+
+/* Row 1 */
+div.css-pvgc5w.e1tzin5v0 {
+    background-color: #00CCFF;
+    border-radius: 3px;
+}
+
+
+/* Hidefooter */
+css-qri22k egzxvld0
+footer.css-qri22k.egzxvld0 {
+    display: none;
+}
