@@ -92,12 +92,14 @@ dataset_name = st.sidebar.selectbox(
     ('Sentiments', 'Date Posted', 'Common Words')
 )
 
+df = pd.DataFrame(float(str(i).replace(',', '')) for i in tweets['Retweets'])
+
 
 # Row A
 # Split Page
 a1, a2, a3 = st.columns(3)
 a1.metric("Total Tweets", tweets.shape[0])
-a2.metric("Average number of Retweets", float(round(tweets['Retweets'].mean(),2)))
+a2.metric("Average number of Retweets", round(df.mean(),2))
 a3.metric("General Feeling", "Neutral")
 st.markdown('''
 <style>
