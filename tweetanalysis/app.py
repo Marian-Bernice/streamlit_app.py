@@ -62,7 +62,7 @@ if authentication_status:
     dateCount = dateCount.reset_index(level=0)
 
     ordered_tweets = tweets.sort_values('Retweets', ascending=False)
-    ordered_tweets = ordered_tweets.head(5)
+    ordered_tweets = ordered_tweets.head(6)
 
     # Top 20 words in the dataset
     tweets['temp'] = tweets['Post Text'].apply(lambda x : str(x).split())
