@@ -90,7 +90,7 @@ st.sidebar.markdown("**Use this dashboard for tweet analytics #QueensFuneral**")
 st.sidebar.header("Menu")
 dataset_name = st.sidebar.selectbox(
     'Select a Metric for analysis',
-    ('Sentiments', 'Date Posted', 'Common Words')
+    ('Sentiments', 'Date Posted', 'Ordered Tweets', 'Common Words')
 )
 
 df = pd.DataFrame(float(str(i).replace(',', '')) for i in tweets['Retweets'])
@@ -132,15 +132,15 @@ if 'Sentiments' in dataset_name:
             color_discrete_map={"Negative":"lightgreen", "Neutral":"#00CCFF", "Positive":"#FFFF00"})
     st.plotly_chart(hist1, use_container_width=True)
 elif 'Date Posted' in dataset_name:
-    st.caption('''Here, you can see the number of tweets recorded per day with the hashtag #QueensFuneral. 
+    st.caption('''Here, you can see the number of tweets with the hashtag #QueensFuneral recorded per day. 
     ''')
     hist2 = px.histogram(dateCount, x='Date Posted', y='#', hover_data=['#'], height=300, color_discrete_sequence=["#00CCFF"])
     st.plotly_chart(hist2, use_container_width=True)
-
+elif 'Ordered Tweets' in dataset_name:
     st.write(f"## Analysis of Ordered tweets by the Day ")
-    st.caption('''Here, you can see the days with the most tweets and retweets with the hashtag #QueensFuneral, ordered in ascending order. 
+    st.caption('''Here, the data is ordered with the top 5 tweets with the hashtag #QueensFuneral that has the highest number of retweets
     ''')
-    hist3 = px.histogram(ordered_tweets, x='Date Posted', y='#', hover_data=['#'], height=300, color_discrete_sequence=["#00CCFF"])
+    hist3 = px.histogram(ordered_tweets, x='Post Tweets', y='Retweets', hover_data=['#'], height=300, color_discrete_sequence=["#00CCFF"])
     st.plotly_chart(hist3, use_container_width=True)
 else:
     # Top 20 words found in the dataset
