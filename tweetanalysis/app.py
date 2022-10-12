@@ -19,6 +19,7 @@ st.markdown(streamlit_style, unsafe_allow_html=True)
 # CSS file
 path = os.path.dirname(__file__)
 my_file = path +'/style.css'
+open(my_file)
 # with open('style.css') as f:
 #     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
