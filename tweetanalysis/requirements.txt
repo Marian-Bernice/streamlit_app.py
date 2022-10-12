@@ -2,3 +2,4 @@ streamlit==1.13.0
 plotly==5.10.0
 pandas==1.4.2
 opencv-python-headless
+streamlit-authenticator==0.2.1
