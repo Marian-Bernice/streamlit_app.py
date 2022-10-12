@@ -120,8 +120,8 @@ if authentication_status:
     # Sidebar
     images = os.path.dirname(__file__)
     image_file = images +'/Government-Digital-Service-logo.png' 
-    authenticator.logout("Logout", "sidebar")
     st.sidebar.image(Image.open(image_file), width= 150)
+    authenticator.logout("Logout", "sidebar")
     st.sidebar.markdown("**Use this dashboard for tweet analytics #QueensFuneral**")
     st.sidebar.header("Menu")
     dataset_name = st.sidebar.selectbox(
@@ -168,15 +168,23 @@ if authentication_status:
         st.plotly_chart(hist1, use_container_width=True)
     elif 'Date Posted' in dataset_name:
         # Search Bar
-        searchterm = st.text_input('Search')
-        searchbutton = st.button('Search')
-        result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source', 
-        'Overall Sentiment', 'Postive', 'Neutral',	'Negative'])
+        st.write("**Search by Date. Format: XXXX - MM -- DD**")
+        st.caption('''Here, you can see all the tweets from a day. 
+        ''')
+        # Search Form
+        st.form(key='searchform'):
+        nav1,nav2 = st.columns([2,1])
+        with nav1:
+            searchterm = st.text_input('Search')
+        with nav2:
+            searchbutton = st.button('Search')
+            result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source',
+            'Overall Sentiment', 'Postive', 'Neutral',	'Negative'])
         if searchbutton:
             result = search(searchterm)
-        
         st.dataframe(result)
 
+        st.write("**Tweets recorded per day**")
         st.caption('''Here, you can see the number of tweets with the hashtag #QueensFuneral recorded per day. 
         ''')
         hist2 = px.histogram(dateCount, x='Date Posted', y='#', hover_data=['#'], height=300, color_discrete_sequence=["#00CCFF"])
