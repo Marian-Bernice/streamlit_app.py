@@ -201,7 +201,7 @@ if authentication_status:
         st.caption('''Here, the data is ordered with the top 5 tweets with the hashtag #QueensFuneral that has the highest number of retweets
         ''')
         # hist3 = px.histogram(ordered_tweets, x='Post Text', y='Retweets', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
-        hist3 = px.pie(ordered_tweets, values='Retweets', names='Post Text', title='Population of European continent')
+        hist3 = px.pie(ordered_tweets, values='Retweets', names='Post Text', title='Population of European continent', width=800, height=400)
         st.plotly_chart(hist3, use_container_width=True)
 
     else:
