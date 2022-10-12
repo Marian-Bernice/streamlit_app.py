@@ -168,18 +168,18 @@ if authentication_status:
         st.plotly_chart(hist1, use_container_width=True)
     elif 'Date Posted' in dataset_name:
         # Search Bar
-        st.write("**Search by Date. Format: XXXX - MM -- DD**")
+        st.write("**Search by Date. Format: XXXX-MM-DD**")
         st.caption('''Here, you can see all the tweets from a day. 
         ''')
         # Search Form
-        st.form(key='searchform')
         nav1,nav2 = st.columns(2)
         with nav1:
             searchterm = st.text_input('Search')
         with nav2:
             st.text("Search ")
-            searchbutton = st.button('Search')
-            result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source',
+            searchbutton = st.button('')
+
+        result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source',
             'Overall Sentiment', 'Postive', 'Neutral',	'Negative'])
         if searchbutton:
             result = search(searchterm)
