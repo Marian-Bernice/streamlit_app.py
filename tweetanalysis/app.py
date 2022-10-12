@@ -109,6 +109,7 @@ st.markdown('''
     justify-content: center;
     padding: 3% 3% 3% 3%;
     background-color: #00CCFF;
+    border-radius: 3px;
 }
 
 /*center metric value*/
@@ -116,6 +117,7 @@ st.markdown('''
     justify-content: center;
     padding: 3% 3% 3% 3%;
     background-color: #00CCFF;
+    border-radius: 3px;
 }
 </style>
 ''', unsafe_allow_html=True)
