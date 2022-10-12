@@ -35,9 +35,6 @@ if authentication_status == False:
 if authentication_status == None:
     st.error("Please enter user details")
 if authentication_status:
-    col1, col2, col3, col4, col5 = st.columns(5)
-    with col5: 
-        authenticator.logout("Logout")
     st.title('#QueensFuneral Tweet Analytics :bird:')
 
     # change font
@@ -114,11 +111,16 @@ if authentication_status:
     counts3 = Counter(item.lower().strip() for sublist in x3 for item in sublist)
     top20n = pd.DataFrame(counts3.most_common(20))
     top20n.columns = ['Common words', 'Count']
+    
+    # search
+    def search(x):
+        return tweets[tweets['Date Posted'] == x]
 
     # View
     # Sidebar
     images = os.path.dirname(__file__)
-    image_file = images +'/Government-Digital-Service-logo.png'
+    image_file = images +'/Government-Digital-Service-logo.png' 
+    authenticator.logout("Logout", "Sidebar")
     st.sidebar.image(Image.open(image_file), width= 150)
     st.sidebar.markdown("**Use this dashboard for tweet analytics #QueensFuneral**")
     st.sidebar.header("Menu")
@@ -165,6 +167,16 @@ if authentication_status:
                 color_discrete_map={"Negative":"lightgreen", "Neutral":"#00CCFF", "Positive":"#FFFF00"})
         st.plotly_chart(hist1, use_container_width=True)
     elif 'Date Posted' in dataset_name:
+        # Search Bar
+        searchterm = st.text_input('Search')
+        searchbutton = st.button('Search')
+        result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source', 
+        'Overall Sentiment', 'Postive', 'Neutral',	'Negative'])
+        if searchbutton:
+            result = search(searchterm)
+        
+        st.dataframe(result)
+        
         st.caption('''Here, you can see the number of tweets with the hashtag #QueensFuneral recorded per day. 
         ''')
         hist2 = px.histogram(dateCount, x='Date Posted', y='#', hover_data=['#'], height=300, color_discrete_sequence=["#00CCFF"])
