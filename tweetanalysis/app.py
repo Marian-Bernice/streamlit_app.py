@@ -24,8 +24,8 @@ my_file = path +'/style.css'
 
 # Data
 tweet_path = os.path.dirname(__file__)
-tweet_file = tweet_path +'/#QueensFuneral Tweets Dataset.xlsx'
-tweets = pd.read_excel(tweet_file)
+tweet_file = tweet_path +'/#QueensFuneral Tweets Dataset.csv'
+tweets = pd.read_csv(tweet_file)
 
 sentiments = pd.DataFrame(tweets.groupby('Overall Sentiment')['#'].count())
 sentiments = sentiments.reset_index(level=0)
