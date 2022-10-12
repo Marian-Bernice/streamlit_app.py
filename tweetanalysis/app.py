@@ -183,7 +183,8 @@ if authentication_status:
         with nav1:
             searchterm = st.text_input('Search')
         with nav2:
-            st.text(" ")
+            st.write(" ")
+            st.write(" ")
             searchbutton = st.button('Search')
 
         result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source',
