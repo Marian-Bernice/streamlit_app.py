@@ -140,7 +140,7 @@ elif 'Ordered Tweets' in dataset_name:
     st.write(f"## Analysis of Ordered tweets by the Day ")
     st.caption('''Here, the data is ordered with the top 5 tweets with the hashtag #QueensFuneral that has the highest number of retweets
     ''')
-    hist3 = px.histogram(ordered_tweets, x='Post Tweet', y='Retweets', hover_data=['#'], height=300, color_discrete_sequence=["#00CCFF"])
+    hist3 = px.histogram(ordered_tweets, x='Post Text', y='Retweets', hover_data=['#'], height=300, color_discrete_sequence=["#00CCFF"])
     st.plotly_chart(hist3, use_container_width=True)
 else:
     # Top 20 words found in the dataset
