@@ -225,6 +225,6 @@ if authentication_status:
 
         # negative
         d1, d2, d3= st.columns(3)
-        d3.write("**Words in NEUTRAL sentiment** ")
-        d3.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True)
+        d2.write("**Words in NEUTRAL sentiment** ")
+        d2.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True)
 
