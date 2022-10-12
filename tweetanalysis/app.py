@@ -1,6 +1,7 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
+import os
 from PIL import Image
 from collections import Counter
 
@@ -16,8 +17,10 @@ streamlit_style = """<style>
 st.markdown(streamlit_style, unsafe_allow_html=True)
 
 # CSS file
-with open('style.css') as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+path = os.path.dirname(__file__)
+my_file = path +'/style.css'
+# with open('style.css') as f:
+#     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Data
 tweets = pd.read_excel('#QueensFuneral Tweets Dataset.xlsx')
