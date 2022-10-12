@@ -200,8 +200,7 @@ if authentication_status:
     elif 'Ordered Tweets' in dataset_name:
         st.caption('''Here, the data is ordered with the top 5 tweets with the hashtag #QueensFuneral that has the highest number of retweets
         ''')
-        hist3 = px.histogram(ordered_tweets, x='Post Text', y='Retweets', hover_data=['#'], height=600, color="Post Text",
-                color_discrete_map={1:"lightgreen", 2:"#00CCFF", 3:"#FFFF00", 4:"#0000", 5:"#66FF0"})
+        hist3 = px.histogram(ordered_tweets, x='Post Text', y='Retweets', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
         st.plotly_chart(hist3, use_container_width=True)
 
     else:
