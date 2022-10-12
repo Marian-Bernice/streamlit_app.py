@@ -35,7 +35,7 @@ if authentication_status == False:
 if authentication_status == None:
     st.error("Please enter user details")
 if authentication_status:
-    col1, col2, col3, col4, col5 = st.columns(3)
+    col1, col2, col3, col4, col5 = st.columns(5)
     with col5: 
         authenticator.logout("Logout")
     st.title('#QueensFuneral Tweet Analytics :bird:')
