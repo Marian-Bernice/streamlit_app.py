@@ -172,7 +172,7 @@ if authentication_status:
         st.caption('''Here, you can see all the tweets from a day. 
         ''')
         # Search Form
-        st.form(key='searchform'):
+        st.form(key='searchform')
         nav1,nav2 = st.columns([2,1])
         with nav1:
             searchterm = st.text_input('Search')
