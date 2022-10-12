@@ -23,7 +23,9 @@ my_file = path +'/style.css'
 #     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Data
-tweets = pd.read_excel('#QueensFuneral Tweets Dataset.xlsx')
+tweet_path = os.path.dirname(__file__)
+tweet_file = tweet_path +'/#QueensFuneral Tweets Dataset.xlsx'
+tweets = pd.read_excel(tweet_file)
 
 sentiments = pd.DataFrame(tweets.groupby('Overall Sentiment')['#'].count())
 sentiments = sentiments.reset_index(level=0)
