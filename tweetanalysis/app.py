@@ -111,6 +111,13 @@ if authentication_status:
     counts3 = Counter(item.lower().strip() for sublist in x3 for item in sublist)
     top20n = pd.DataFrame(counts3.most_common(20))
     top20n.columns = ['Common words', 'Count']
+
+    # negative words
+    neutral = tweets[tweets['Overall Sentiment'] == 'Neutral']
+    x4 = tuple(neutral['temp'])
+    counts4 = Counter(item.lower().strip() for sublist in x4 for item in sublist)
+    top20nl = pd.DataFrame(counts4.most_common(20))
+    top20nl.columns = ['Common words', 'Count']
     
     # search
     def search(x):
@@ -203,7 +210,7 @@ if authentication_status:
 
         st.write("## Breakdown into Positive & Negative Sentiments ")
         st.caption('''Here, we take out words that are most common in tweets but make no contribution to sentiment - termed STOP WORDS.
-                    It gives the 20 most common words that are either positive or negative.
+                    We then looked at the words which influenced the positive and negative tweets.
         ''')
 
         # Split page
@@ -215,4 +222,8 @@ if authentication_status:
         # negative
         b2.write("**Words in NEGATIVE sentiment** ")
         b2.bar_chart(top20n, x='Common words', y='Count', use_container_width=True)
+
+        # negative
+        st.write("**Words in NEUTRAL sentiment** ")
+        st.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True)
 
