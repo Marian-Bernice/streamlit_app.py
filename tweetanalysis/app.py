@@ -97,7 +97,7 @@ dataset_name = st.sidebar.selectbox(
 # Split Page
 a1, a2, a3 = st.columns(3)
 a1.metric("Total Tweets", tweets.shape[0])
-a2.metric("Average number of Retweets", round(tweets['Retweets'].mean(),2))
+a2.metric("Average number of Retweets", float(round(tweets['Retweets'].mean(),2)))
 a3.metric("General Feeling", "Neutral")
 st.markdown('''
 <style>
