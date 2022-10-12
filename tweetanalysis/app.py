@@ -210,7 +210,7 @@ if authentication_status:
 
         st.write("## Breakdown into Positive & Negative Sentiments ")
         st.caption('''Here, we take out words that are most common in tweets but make no contribution to sentiment - termed STOP WORDS.
-                    We then looked at the words which influenced the positive and negative tweets.
+                    We then looked at the words which influenced the positive, negative and neutral tweets.
         ''')
 
         # Split page
@@ -224,6 +224,7 @@ if authentication_status:
         b2.bar_chart(top20n, x='Common words', y='Count', use_container_width=True)
 
         # negative
-        st.write("**Words in NEUTRAL sentiment** ")
-        st.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True)
+        d1, d2, d3= st.columns(3)
+        d3.write("**Words in NEUTRAL sentiment** ")
+        d3.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True)
 
