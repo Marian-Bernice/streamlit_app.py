@@ -26,7 +26,7 @@ for uname,name,pwd in zip(usernames,names,hashed_passwords):
     user_dict = {"name": name, "password": pwd}
     credentials["usernames"].update({uname: user_dict})
 
-authenticator = stauth.Authenticate(credentials, 'cookie_name', '1234', cookie_expiry_days=1)
+authenticator = stauth.Authenticate(credentials, 'cookie_name', '1234', cookie_expiry_days=2)
 
 name, authentication_status, username = authenticator.login('Login', 'main')
 
@@ -35,6 +35,9 @@ if authentication_status == False:
 if authentication_status == None:
     st.error("Please enter user details")
 if authentication_status:
+    col1, col2, col3, col4, col5 = st.columns(3)
+    with col5: 
+        authenticator.logout("Logout")
     st.title('#QueensFuneral Tweet Analytics :bird:')
 
     # change font
@@ -123,9 +126,6 @@ if authentication_status:
         'Select a Metric for analysis',
         ('Sentiments', 'Date Posted', 'Ordered Tweets', 'Common Words')
     )
-    col1, col2, col3 = st.columns(3)
-    with col3: 
-        authenticator.logout("Logout")
 
 
 
