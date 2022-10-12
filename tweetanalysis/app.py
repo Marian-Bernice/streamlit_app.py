@@ -120,7 +120,7 @@ if authentication_status:
     # Sidebar
     images = os.path.dirname(__file__)
     image_file = images +'/Government-Digital-Service-logo.png' 
-    authenticator.logout("Logout", "Sidebar")
+    authenticator.logout("Logout", "sidebar")
     st.sidebar.image(Image.open(image_file), width= 150)
     st.sidebar.markdown("**Use this dashboard for tweet analytics #QueensFuneral**")
     st.sidebar.header("Menu")
@@ -176,7 +176,7 @@ if authentication_status:
             result = search(searchterm)
         
         st.dataframe(result)
-        
+
         st.caption('''Here, you can see the number of tweets with the hashtag #QueensFuneral recorded per day. 
         ''')
         hist2 = px.histogram(dateCount, x='Date Posted', y='#', hover_data=['#'], height=300, color_discrete_sequence=["#00CCFF"])
