@@ -183,8 +183,8 @@ if authentication_status:
         with nav1:
             searchterm = st.text_input('Search')
         with nav2:
-            st.text("Search ")
-            searchbutton = st.button('')
+            st.text(" ")
+            searchbutton = st.button('Search')
 
         result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source',
             'Overall Sentiment', 'Postive', 'Neutral',	'Negative'])
@@ -202,6 +202,8 @@ if authentication_status:
         ''')
         hist3 = px.histogram(ordered_tweets, x='Post Text', y='Retweets', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
         st.plotly_chart(hist3, use_container_width=True)
+        px.pie(ordered_tweets, values='Retweets', names='Post Text', title='Population of European continent')
+
     else:
         # Top 20 words found in the dataset
         st.caption('''Here, you can see the top 20 common words found in the #QueensFuneral tweets. 
