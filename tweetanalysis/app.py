@@ -173,7 +173,7 @@ if authentication_status:
         ''')
         # Search Form
         st.form(key='searchform')
-        nav1,nav2 = st.columns([2,1])
+        nav1,nav2 = st.columns(2)
         with nav1:
             searchterm = st.text_input('Search')
         with nav2:
