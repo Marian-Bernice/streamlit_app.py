@@ -23,7 +23,7 @@ my_file = path +'/style.css'
 #     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # Data
-tweet_path = os.tweet_path.dirname(__file__)
+tweet_path = os.path.dirname(__file__)
 tweet_file = tweet_path +'/#QueensFuneral Tweets Dataset.csv'
 tweets = pd.read_csv(tweet_file)
 
@@ -82,7 +82,7 @@ top20n.columns = ['Common words', 'Count']
 
 # View
 # Sidebar
-images = os.images.dirname(__file__)
+images = os.path.dirname(__file__)
 image_file = images +'/Government-Digital-Service-logo.png'
 st.sidebar.image(Image.open(image_file), width= 150)
 st.sidebar.markdown("**Use this dashboard for tweet analytics #QueensFuneral**")
