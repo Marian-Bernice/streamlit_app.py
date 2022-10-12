@@ -108,14 +108,14 @@ st.markdown('''
 [data-testid="stMetricLabel"] > div:nth-child(1) {
     justify-content: center;
     padding: 3% 3% 3% 3%;
-
+    background-color: #00CCFF;
 }
 
 /*center metric value*/
 [data-testid="stMetricValue"] > div:nth-child(1) {
     justify-content: center;
     padding: 3% 3% 3% 3%;
-
+    background-color: #00CCFF;
 }
 </style>
 ''', unsafe_allow_html=True)
