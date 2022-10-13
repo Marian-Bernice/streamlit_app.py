@@ -252,8 +252,10 @@ if authentication_status:
         b1, b2 = st.columns(2)
         # positive   
         b1.write("**Words in POSITIVE sentiment**")
-        bchart1 = px.histogram(top20p, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
-        b1.plotly_chart(bchart1, use_container_width=True)
+        bchart1 = b1.bar_chart(top20p, x='Common words', y='Count', use_container_width=True)
+
+        # bchart1 = px.histogram(top20p, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
+        # b1.plotly_chart(bchart1, use_container_width=True)
         
         # Download
         mybuff = StringIO()
