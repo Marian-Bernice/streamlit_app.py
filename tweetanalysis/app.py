@@ -184,7 +184,7 @@ if authentication_status:
             html_bytes = buffer.getvalue().encode()
 
             st.download_button(
-                label='Download',
+                label='Download Graph',
                 data=html_bytes,
                 file_name='plot.html',
                 mime='text/html'
@@ -225,7 +225,7 @@ if authentication_status:
             html_bytes = buffer.getvalue().encode()
 
             st.download_button(
-                label='Download',
+                label='Download Graph',
                 data=html_bytes,
                 file_name='daily.html',
                 mime='text/html'
@@ -245,7 +245,7 @@ if authentication_status:
             html_bytes = buffer.getvalue().encode()
 
             st.download_button(
-                label='Download',
+                label='Download Graph',
                 data=html_bytes,
                 file_name='tweet.html',
                 mime='text/html'
