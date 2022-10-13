@@ -252,7 +252,7 @@ if authentication_status:
         b1, b2 = st.columns(2)
         # positive   
         b1.write("**Words in POSITIVE sentiment**")
-        bchart1 = b1.bar_chart(top20p, x='Common words', y='Count', use_container_width=True)
+        bchart1 = b1.bar_chart(top20p, x='Common words', y='Count', use_container_width=True, color_discrete_sequence=["#00CCFF"])
 
         # bchart1 = px.histogram(top20p, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
         # b1.plotly_chart(bchart1, use_container_width=True)
@@ -266,8 +266,11 @@ if authentication_status:
 
         # negative
         b2.write("**Words in NEGATIVE sentiment** ")
-        bchart2 = px.histogram(top20n, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
-        b2.bar_chart(bchart2, use_container_width=True)
+        bchart2 = b2.bar_chart(top20n, x='Common words', y='Count', use_container_width=True, color_discrete_sequence=["#00CCFF"])
+
+
+        # bchart2 = px.histogram(top20n, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
+        # b2.bar_chart(bchart2, use_container_width=True)
         
         # Download
         mybuff = StringIO()
@@ -278,8 +281,11 @@ if authentication_status:
         
         # neutral
         st.write("**Words in NEUTRAL sentiment** ")
-        bchart3 = px.histogram(top20nl, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
-        st.bar_chart(bchart3, use_container_width=True)
+        bchart3 = st.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True, color_discrete_sequence=["#00CCFF"])
+
+
+        # bchart3 = px.histogram(top20nl, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
+        # st.bar_chart(bchart3, use_container_width=True)
         
         # Download
         ql1,ql2,ql3 = st.columns(3)
