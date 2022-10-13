@@ -258,10 +258,10 @@ if authentication_status:
         # b1.plotly_chart(bchart1, use_container_width=True)
         
         # Download
-        mybuff = StringIO()
-        bchart1.write_html(mybuff, include_plotlyjs='cdn')
-        mybuff = BytesIO(mybuff.read().encode())
-        href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot3.html">Download plot</a>'
+        mybuff3 = StringIO()
+        bchart1.write_html(mybuff3, include_plotlyjs='cdn')
+        mybuff3 = BytesIO(mybuff3.read().encode())
+        href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff3.read()).decode()}" download="plot3.html">Download plot</a>'
         st.markdown(href, unsafe_allow_html=True)
 
         # negative
