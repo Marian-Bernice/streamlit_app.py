@@ -226,7 +226,6 @@ if authentication_status:
         b2.bar_chart(top20n, x='Common words', y='Count', use_container_width=True)
 
         # negative
-        d1, d2, d3= st.columns(3)
-        d2.write("**Words in NEUTRAL sentiment** ")
-        d2.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True)
+        st.write("**Words in NEUTRAL sentiment** ")
+        st.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True)
 
