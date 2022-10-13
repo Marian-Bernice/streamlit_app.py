@@ -184,12 +184,13 @@ if authentication_status:
             mybuff = BytesIO(mybuff.read().encode())
             href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot.html">Download plot</a>'
             st.markdown(href, unsafe_allow_html=True)
-            
+
     elif 'Date Posted' in dataset_name:
         # Search Bar
         st.write("**Search by Date. Format: XXXX-MM-DD**")
         st.caption('''Here, you can see all the tweets from a day. 
         ''')
+
         # Search Form
         nav1,nav2 = st.columns(2)
         with nav1:
@@ -204,17 +205,37 @@ if authentication_status:
         if searchbutton:
             result = search(searchterm)
         st.dataframe(result)
-
+        
+        # Daily recorded Tweets
         st.write("**Tweets recorded per day**")
         st.caption('''Here, you can see the number of tweets with the hashtag #QueensFuneral recorded per day. 
         ''')
         hist2 = px.histogram(dateCount, x='Date Posted', y='#', hover_data=['#'], height=300, color_discrete_sequence=["#00CCFF"])
         st.plotly_chart(hist2, use_container_width=True)
+
+        # Download
+        dl1,dl2,dl3 = st.columns(3)
+        with dl2:
+            mybuff1 = StringIO()
+            hist2.write_html(mybuff1, include_plotlyjs='cdn')
+            mybuff1 = BytesIO(mybuff1.read().encode())
+            href1 = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff1.read()).decode()}" download="plot1.html">Download plot</a>'
+            st.markdown(href1, unsafe_allow_html=True)
+
     elif 'Ordered Tweets' in dataset_name:
         st.caption('''Here, the data is ordered with the top 5 tweets with the hashtag #QueensFuneral that has the highest number of retweets
         ''')
         hist3 = px.histogram(ordered_tweets, x='Post Text', y='Retweets', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
         st.plotly_chart(hist3, use_container_width=True)
+
+        # Download
+        wl1,wl2,wl3 = st.columns(3)
+        with wl2:
+            mybuff = StringIO()
+            hist3.write_html(mybuff, include_plotlyjs='cdn')
+            mybuff = BytesIO(mybuff.read().encode())
+            href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot2.html">Download plot</a>'
+            st.markdown(href, unsafe_allow_html=True)
 
     else:
         # Top 20 words found in the dataset
@@ -231,13 +252,39 @@ if authentication_status:
         b1, b2 = st.columns(2)
         # positive   
         b1.write("**Words in POSITIVE sentiment**")
-        b1.bar_chart(top20p, x='Common words', y='Count', use_container_width=True)
+        bchart1 = px.histogram(top20p, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
+        b1.bar_chart(bchart1, use_container_width=True)
+        
+        # Download
+        mybuff = StringIO()
+        bchart1.write_html(mybuff, include_plotlyjs='cdn')
+        mybuff = BytesIO(mybuff.read().encode())
+        href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot3.html">Download plot</a>'
+        st.markdown(href, unsafe_allow_html=True)
 
         # negative
         b2.write("**Words in NEGATIVE sentiment** ")
-        b2.bar_chart(top20n, x='Common words', y='Count', use_container_width=True)
-
-        # negative
+        bchart2 = px.histogram(top20n, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
+        b2.bar_chart(bchart2, use_container_width=True)
+        
+        # Download
+        mybuff = StringIO()
+        bchart1.write_html(mybuff, include_plotlyjs='cdn')
+        mybuff = BytesIO(mybuff.read().encode())
+        href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot4.html">Download plot</a>'
+        st.markdown(href, unsafe_allow_html=True)
+        
+        # neutral
         st.write("**Words in NEUTRAL sentiment** ")
-        st.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True)
+        bchart3 = px.histogram(top20nl, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
+        st.bar_chart(bchart3, use_container_width=True)
+        
+        # Download
+        ql1,ql2,ql3 = st.columns(3)
+        with ql2:
+            mybuff = StringIO()
+            bchart3.write_html(mybuff, include_plotlyjs='cdn')
+            mybuff = BytesIO(mybuff.read().encode())
+            href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot5.html">Download plot</a>'
+            st.markdown(href, unsafe_allow_html=True)
 
