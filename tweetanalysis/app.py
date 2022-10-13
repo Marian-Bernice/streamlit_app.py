@@ -192,28 +192,28 @@ if authentication_status:
         ''')
 
         # Search Form
-        nav1,nav2 = st.columns(2)
-        searchterm = nav1.text_input('Search')
-        nav2.write(" ")
-        nav2.write(" ")
-        searchbutton = nav2.button('Search')
+        # nav1,nav2 = st.columns(2)
+        # searchterm = nav1.text_input('Search')
+        # nav2.write(" ")
+        # nav2.write(" ")
+        # searchbutton = nav2.button('Search')
 
-        result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source',
-        'Overall Sentiment', 'Postive', 'Neutral',	'Negative'])
-        if searchbutton:
-            result = search(searchterm)
-
-        st.dataframe(result)
-
-        # Search Bar
-        # searchterm = st.text_input('Search')
-        # searchbutton = st.button('Search')
-        # result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source', 
+        # result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source',
         # 'Overall Sentiment', 'Postive', 'Neutral',	'Negative'])
         # if searchbutton:
         #     result = search(searchterm)
-        
+
         # st.dataframe(result)
+
+        # Search Bar
+        searchterm = st.text_input('Search')
+        searchbutton = st.button('Search')
+        result = pd.DataFrame(columns = ['#', 'Date Posted', 'Time Posted', 'Author', 'Post Text', ' Retweets',	'Favorites', 'Source', 
+        'Overall Sentiment', 'Postive', 'Neutral',	'Negative'])
+        if searchbutton:
+            result = search(searchterm)
+        
+        st.dataframe(result)
         
         # Daily recorded Tweets
         st.write("**Tweets recorded per day**")
