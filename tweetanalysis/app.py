@@ -179,11 +179,16 @@ if authentication_status:
         # Download
         pl1,pl2,pl3 = st.columns(3)
         with pl2:
-            mybuff = StringIO()
-            hist1.write_html(mybuff, include_plotlyjs='cdn')
-            mybuff = BytesIO(mybuff.read().encode())
-            href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot.html">Download plot</a>'
-            st.markdown(href, unsafe_allow_html=True)
+            buffer = StringIO()
+            hist1.write_html(buffer, include_plotlyjs='cdn')
+            html_bytes = buffer.getvalue().encode()
+
+            st.download_button(
+                label='Download',
+                data=html_bytes,
+                file_name='plot.html',
+                mime='text/html'
+            )
 
     elif 'Date Posted' in dataset_name:
         # Search Bar
@@ -215,11 +220,16 @@ if authentication_status:
         # Download
         dl1,dl2,dl3 = st.columns(3)
         with dl2:
-            mybuff1 = StringIO()
-            hist2.write_html(mybuff1, include_plotlyjs='cdn')
-            mybuff1 = BytesIO(mybuff1.read().encode())
-            href1 = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff1.read()).decode()}" download="plot1.html">Download plot</a>'
-            st.markdown(href1, unsafe_allow_html=True)
+            buffer = StringIO()
+            hist2.write_html(buffer, include_plotlyjs='cdn')
+            html_bytes = buffer.getvalue().encode()
+
+            st.download_button(
+                label='Download',
+                data=html_bytes,
+                file_name='daily.html',
+                mime='text/html'
+            )
 
     elif 'Ordered Tweets' in dataset_name:
         st.caption('''Here, the data is ordered with the top 5 tweets with the hashtag #QueensFuneral that has the highest number of retweets
@@ -230,11 +240,16 @@ if authentication_status:
         # Download
         wl1,wl2,wl3 = st.columns(3)
         with wl2:
-            mybuff = StringIO()
-            hist3.write_html(mybuff, include_plotlyjs='cdn')
-            mybuff = BytesIO(mybuff.read().encode())
-            href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot2.html">Download plot</a>'
-            st.markdown(href, unsafe_allow_html=True)
+            buffer = StringIO()
+            hist3.write_html(buffer, include_plotlyjs='cdn')
+            html_bytes = buffer.getvalue().encode()
+
+            st.download_button(
+                label='Download',
+                data=html_bytes,
+                file_name='tweet.html',
+                mime='text/html'
+            )
 
     else:
         # Top 20 words found in the dataset
