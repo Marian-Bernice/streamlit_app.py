@@ -6,6 +6,8 @@ from PIL import Image
 from collections import Counter
 import pickle
 from pathlib import Path
+from io import StringIO, BytesIO
+import base64
 
 import streamlit_authenticator as stauth
 
@@ -173,6 +175,16 @@ if authentication_status:
         hist1 = px.histogram(sentiments, x='Overall Sentiment', y='#', hover_data=['#'], height=300, color="Overall Sentiment",
                 color_discrete_map={"Negative":"lightgreen", "Neutral":"#00CCFF", "Positive":"#FFFF00"})
         st.plotly_chart(hist1, use_container_width=True)
+
+        # Download
+        pl1,pl2,pl3 = st.columns(3)
+        with pl2:
+            mybuff = StringIO()
+            hist1.write_html(mybuff, include_plotlyjs='cdn')
+            mybuff = BytesIO(mybuff.read().encode())
+            href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot.html">Download plot</a>'
+            st.markdown(href, unsafe_allow_html=True)
+            
     elif 'Date Posted' in dataset_name:
         # Search Bar
         st.write("**Search by Date. Format: XXXX-MM-DD**")
