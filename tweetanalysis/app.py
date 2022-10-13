@@ -254,45 +254,14 @@ if authentication_status:
         b1.write("**Words in POSITIVE sentiment**")
         bchart1 = b1.bar_chart(top20p, x='Common words', y='Count', use_container_width=True)
 
-        # bchart1 = px.histogram(top20p, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
-        # b1.plotly_chart(bchart1, use_container_width=True)
-        
-        # Download
-        mybuff3 = StringIO()
-        bchart1.write_html(mybuff3, include_plotlyjs='cdn')
-        mybuff3 = BytesIO(mybuff3.read().encode())
-        href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff3.read()).decode()}" download="plot3.html">Download plot</a>'
-        st.markdown(href, unsafe_allow_html=True)
 
         # negative
         b2.write("**Words in NEGATIVE sentiment** ")
         bchart2 = b2.bar_chart(top20n, x='Common words', y='Count', use_container_width=True)
 
-
-        # bchart2 = px.histogram(top20n, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
-        # b2.bar_chart(bchart2, use_container_width=True)
-        
-        # Download
-        mybuff = StringIO()
-        bchart1.write_html(mybuff, include_plotlyjs='cdn')
-        mybuff = BytesIO(mybuff.read().encode())
-        href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot4.html">Download plot</a>'
-        st.markdown(href, unsafe_allow_html=True)
         
         # neutral
         st.write("**Words in NEUTRAL sentiment** ")
         bchart3 = st.bar_chart(top20nl, x='Common words', y='Count', use_container_width=True)
 
-
-        # bchart3 = px.histogram(top20nl, x='Common words', y='Count', hover_data=['#'], height=600, color_discrete_sequence=["#00CCFF"])
-        # st.bar_chart(bchart3, use_container_width=True)
-        
-        # Download
-        ql1,ql2,ql3 = st.columns(3)
-        with ql2:
-            mybuff = StringIO()
-            bchart3.write_html(mybuff, include_plotlyjs='cdn')
-            mybuff = BytesIO(mybuff.read().encode())
-            href = f'<a href="data:file/txt;base64, {base64.b64encode(mybuff.read()).decode()}" download="plot5.html">Download plot</a>'
-            st.markdown(href, unsafe_allow_html=True)
 
